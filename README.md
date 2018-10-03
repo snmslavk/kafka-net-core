@@ -4,7 +4,8 @@
 
 This is the net core versions of the library [kafka-net](https://github.com/Jroland/kafka-net)
 
-Examples
+# Examples
+
 Use .NET CLI
 
       dotnet add package kafka-net-core --version 1.0.0
