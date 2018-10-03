@@ -1,3 +1,5 @@
+[![NuGet version](https://badge.fury.io/nu/kafka-net-core.svg)](https://badge.fury.io/nu/kafka-net-core)
+
 # kafka-net-core
 
 This is the net core versions of the library kafka-net
