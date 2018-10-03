@@ -2,7 +2,7 @@
 
 # kafka-net-core
 
-This is the net core versions of the library kafka-net
+This is the net core versions of the library [kafka-net](https://github.com/Jroland/kafka-net)
 
 Examples
 -----------
