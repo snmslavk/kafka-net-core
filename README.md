@@ -7,11 +7,11 @@ This is the net core versions of the library [kafka-net](https://github.com/Jrol
 # Examples
 
 Use .NET CLI
-
-      dotnet add package kafka-net-core --version 1.0.2
-
-##### Producer
+```sh
+dotnet add package kafka-net-core --version 1.0.2
 ```
+##### Producer
+```csharp
 var options = new KafkaOptions(new Uri("http://localhost:9092"));
 var router = new BrokerRouter(options);
 
@@ -21,7 +21,7 @@ using (Producer client = new Producer(router))
 }
 ```
 ##### Consumer
-```
+```csharp
 var options = new KafkaOptions(new Uri("http://localhost:9092"));
 var router = new BrokerRouter(options);
 using (var consumer = new Consumer(new ConsumerOptions("test_topic", router)))
