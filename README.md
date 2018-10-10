@@ -8,17 +8,17 @@ This is the net core versions of the library [kafka-net](https://github.com/Jrol
 
 Use .NET CLI
 
-      dotnet add package kafka-net-core --version 1.0.0
+      dotnet add package kafka-net-core --version 1.0.2
 -----------
 ##### Producer
 ```sh
-var options = new KafkaOptions(new Uri("http://SERVER1:9092"), new Uri("http://SERVER2:9092"));
+var options = new KafkaOptions(new Uri("http://localhost:9092"));
 var router = new BrokerRouter(options);
-var client = new Producer(router);
 
-client.SendMessageAsync("TestHarness", new[] { new Message("hello world")}).Wait();
-
-using (client) { }
+using (Producer client = new Producer(router)) 
+{ 
+      client.SendMessageAsync("TestHarness", new[] { new Message("hello world")}).Wait();
+}
 ```
 ##### Consumer
 ```sh
