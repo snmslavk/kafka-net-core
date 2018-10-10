@@ -12,24 +12,25 @@ Use .NET CLI
 -----------
 ##### Producer
 ```sh
-var options = new KafkaOptions(new Uri("http://localhost:9092"));
-var router = new BrokerRouter(options);
+      var options = new KafkaOptions(new Uri("http://localhost:9092"));
+      var router = new BrokerRouter(options);
 
-using (Producer client = new Producer(router)) 
-{ 
-      client.SendMessageAsync("TestHarness", new[] { new Message("hello world")}).Wait();
-}
+      using (Producer client = new Producer(router))
+      {
+          client.SendMessageAsync("test_topic", new[] { new Message("hello world") }).Wait();
+      }
 ```
 ##### Consumer
 ```sh
-var options = new KafkaOptions(new Uri("http://SERVER1:9092"), new Uri("http://SERVER2:9092"));
-var router = new BrokerRouter(options);
-var consumer = new Consumer(new ConsumerOptions("TestHarness", router));
-
-//Consume returns a blocking IEnumerable (ie: never ending stream)
-foreach (var message in consumer.Consume())
-{
-    Console.WriteLine("Response: P{0},O{1} : {2}", 
-        message.Meta.PartitionId, message.Meta.Offset, message.Value);  
-}
+      var options = new KafkaOptions(new Uri("http://localhost:9092"));
+      var router = new BrokerRouter(options);
+      using (var consumer = new Consumer(new ConsumerOptions("test_topic", router)))
+      {
+          //Consume returns a blocking IEnumerable (ie: never ending stream)
+          foreach (var message in consumer.Consume())
+          {
+              Console.WriteLine("Response: P{0},O{1} : {2}",
+                  message.Meta.PartitionId, message.Meta.Offset, message.Value);
+          }
+      }
 ```
