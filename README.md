@@ -9,7 +9,7 @@ This is the net core versions of the library [kafka-net](https://github.com/Jrol
 Use .NET CLI
 
       dotnet add package kafka-net-core --version 1.0.2
------------
+
 ##### Producer
 ```sh
       var options = new KafkaOptions(new Uri("http://localhost:9092"));
