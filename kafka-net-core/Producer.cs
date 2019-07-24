@@ -183,7 +183,7 @@ namespace KafkaNet
 
                         batch = await _asyncCollection.TakeAsync(BatchSize, BatchDelayTime, _stopToken.Token).ConfigureAwait(false);
                     }
-                    catch (OperationCanceledException ex)
+                    catch (OperationCanceledException)
                     {
                         //TODO log that the operation was canceled, this only happens during a dispose
                     }
@@ -270,6 +270,10 @@ namespace KafkaNet
                         MessagesSent = group.Select(x => x.TopicMessage).ToList()
                     };
 
+                    /* TODO: Build warning: [CS4014] Because this call is not awaited, execution of the current
+                     method continues before the call is completed. Consider applying the 'await' operator to the
+                     result of the call. */
+                    
                     //ensure the async is released as soon as each task is completed
                     brokerSendTask.Task.ContinueWith(t => { _semaphoreMaximumAsync.Release(); }, cancellationToken);
 
