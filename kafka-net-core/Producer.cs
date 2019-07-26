@@ -183,7 +183,7 @@ namespace KafkaNet
 
                         batch = await _asyncCollection.TakeAsync(BatchSize, BatchDelayTime, _stopToken.Token).ConfigureAwait(false);
                     }
-                    catch (OperationCanceledException ex)
+                    catch (OperationCanceledException)
                     {
                         //TODO log that the operation was canceled, this only happens during a dispose
                     }
@@ -271,7 +271,9 @@ namespace KafkaNet
                     };
 
                     //ensure the async is released as soon as each task is completed
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     brokerSendTask.Task.ContinueWith(t => { _semaphoreMaximumAsync.Release(); }, cancellationToken);
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
                     sendTasks.Add(brokerSendTask);
                 }

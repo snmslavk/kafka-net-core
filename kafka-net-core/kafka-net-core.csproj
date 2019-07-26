@@ -1,8 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>kafka_net_core</RootNamespace>
+    <Version>1.1.0</Version>
+    <PackageTags>kafka net-core kafka-client net-standard kafka-netcore kafka-netstandard</PackageTags>
+    <PackageReleaseNotes>change target framework to netstandard 2</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/snmslavk/kafka-net-core</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/snmslavk/kafka-net-core/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/snmslavk/kafka-net-core</RepositoryUrl>
+    <Authors>Viacheslav Avsenev</Authors>
   </PropertyGroup>
 
 </Project>
